@@ -17,7 +17,7 @@
       </el-select>
       <br/>
       <el-button type="primary" v-on:click="query" size="small">查询</el-button>
-      <router-link class="mui-tab-item" :to="{path:'/upload'}">
+      <router-link class="mui-tab-item" :to="{path:'/media/upload'}">
         <el-button  type="primary" size="small" v-if="ischoose != true">上传文件</el-button>
       </router-link>
     </el-form>
