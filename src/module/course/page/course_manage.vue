@@ -47,7 +47,6 @@
 
     },
     mounted(){
-
       //课程id
       this.courseid = this.$route.params.courseid
 

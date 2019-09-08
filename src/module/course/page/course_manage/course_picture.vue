@@ -27,7 +27,7 @@
         dialogImageUrl: '',
         dialogVisible: false,
         fileList:[],
-        uploadval:{filetag:"course"},//上传提交的额外的数据 ，将uploadval转成key/value提交给服务器
+        uploadval:{fileTag:"course",businessKey:"key",metaData:"{time:'2019-8-8'}"},//上传提交的额外的数据 ，将uploadval转成key/value提交给服务器
         imgUrl:sysConfig.imgUrl
       }
     },
@@ -69,16 +69,18 @@
         //从response得到新的图片文件的地址
         if(response.success){
           let fileId = response.fileSystem.fileId;
-          courseApi.addCoursePic(this.courseid,fileId).then(res=>{
+          courseApi.addCoursePic(this.courseid,fileId)
+            .then(res=>{
               if(res.success){
-                  this.$message.success("上传图片")
+                  this.$message.success("上传成功")
               }else{
                 this.$message.error(res.message)
+                this.handleError()
               }
-
           })
+        }else {
+          this.handleError()
         }
-
       },
       //上传失败执行的钩子方法
       handleError(err, file, fileList){
@@ -114,7 +116,6 @@
               //将图片地址设置到
             this.fileList.push({name:'pic',url:imgUrl,fileId:res.pic})
           }
-
       })
       //测试调用promise方法，then中写的成功后的回调方法，
 //      this.testPromise(3).then(res=>{

@@ -17,7 +17,7 @@
       </el-col>
       <el-col :span="8" v-for="(course, index) in courses" :key="course.id" :offset="index > 0 ? 2 : 2">
         <el-card :body-style="{ padding: '10px' }">
-          <img :src="course.pic!=null?imgUrl+course.pic:'/static/images/nonepic.jpg'" class="image" height="150px">
+          <img :src="isEmpty(course.pic)?imgUrl+course.pic:'/static/images/nonepic.jpg'" class="image" height="150px">
           <div style="padding: 10px;">
             <span>{{course.name}}</span>
             <div class="bottom clearfix">
@@ -46,9 +46,24 @@
     data() {
       return {
         page:1,
-        size:7,
+        size:9,
         total: 0,
         courses: [
+          {
+            id:'402885816243d2dd016243f24c030002',
+            name:'Vue课程',
+            pic:''
+          },
+          {
+            id:'test01',
+            name:'test01',
+            pic:''
+          },
+          {
+            id:'test01',
+            name:'test01',
+            pic:''
+          },
           {
             id:'test01',
             name:'test01',
@@ -78,14 +93,15 @@
             this.total = res.queryResult.total;
             this.courses = res.queryResult.list;
           }
-
         });
       },
       handleManage: function (id) {
         console.log(id)
         this.$router.push({ path: '/course/manager/'+id})
+      },
+      isEmpty(pic){
+        return pic!=null && pic.length >0;
       }
-
     },
     created(){
 

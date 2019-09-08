@@ -13,85 +13,88 @@ module.exports = {
     assetsPublicPath: '/',
     //proxyTable: proxyConfig.proxyList,
     proxyTable: {
-      '/banner': {
+      // '/banner': {
+      //   // target: 'http://localhost:3000/mock/11'
+      //   target: 'http://127.0.0.1:7777'
+      // },
+      '/api/course': {
         // target: 'http://localhost:3000/mock/11'
-        target: 'http://127.0.0.1:7777'
+        target: 'http://127.0.0.1:31200',
+        pathRewrite: {
+          changeOrigin: true,
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201/api'
+      }
+      ,
+      /* '/api': {
+         // target: 'http://localhost:3000/mock/11'
+         target: xcApiUrl
+         //target: 'http://127.0.0.1:50201'
+
+       }*/
+      '/api/ucenter': {
+        // target: 'http://localhost:3000/mock/11'
+        target: 'http://127.0.0.1:31200',
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201'
+
       },
-     /* '/api': {
+      '/api/auth': {
         // target: 'http://localhost:3000/mock/11'
-        target: xcApiUrl
-        //target: 'http://127.0.0.1:50201'
+        target: 'http://127.0.0.1:31200/auth',
 
-      }*/
-       '/api/ucenter': {
-       // target: 'http://localhost:3000/mock/11'
-       target: 'http://127.0.0.1:31200',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201'
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201/api'
 
-       },
-       '/api/auth': {
-       // target: 'http://localhost:3000/mock/11'
-       target: 'http://127.0.0.1:31200/auth',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201/api'
+      },
 
-       },
-       '/api/course': {
-       // target: 'http://localhost:3000/mock/11'
-         target: 'http://127.0.0.1:31200',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201/api'
+      '/api/media': {//媒资管理
+        target: 'http://127.0.0.1:31400',
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201'
+      },
 
-       },
-       '/api/media': {//媒资管理
-       target: 'http://127.0.0.1:31400',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201'
-       },
+      '/api/cms': {//cms管理
+        //target: 'http://127.0.0.1:31001'
+        target: 'http://127.0.0.1:50201',
+        pathRewrite: {
+          '^/api': ''
+        }
 
-       '/api/cms': {//cms管理
-       //target: 'http://127.0.0.1:31001'
-       target: 'http://127.0.0.1:50201',
-         pathRewrite: {
-           '^/api': ''
-         }
+      },
 
-       },
+      '/api/filesystem': {//文件系统管理
+        target: 'http://127.0.0.1:22100',
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201'
 
-       '/api/filesystem': {//文件系统管理
-       target: 'http://127.0.0.1:22100',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201'
+      },
+      '/api/category': {//分类管理
+        // target: 'http://127.0.0.1:3000/mock/11'
+        target: 'http://127.0.0.1:31200',
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201'
 
-       },
-       '/api/category': {//分类管理
-       // target: 'http://127.0.0.1:3000/mock/11'
-       target: 'http://127.0.0.1:31200',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201'
+      },
+      '/api/sys': {//系统管理
+        target: 'http://127.0.0.1:31001',
+        pathRewrite: {
+          '^/api': ''
+        }
+        // target: 'http://127.0.0.1:50201'
 
-       },
-       '/api/sys': {//系统管理
-       target: 'http://127.0.0.1:31001',
-         pathRewrite: {
-           '^/api': ''
-         }
-       // target: 'http://127.0.0.1:50201'
-
-       }
+      }
       /*'/static/!*': {//系统管理
        //target: 'http://127.0.0.1:31001'
        target: 'http://127.0.0.1'

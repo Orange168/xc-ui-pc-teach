@@ -8,7 +8,7 @@ export default [
     component: Home,
     name: '媒资管理',
     hidden: false,
-    iconCls: 'el-icon-document',
+    iconCls: 'el-icon-menu',
     children: [
       { path: '/upload', name: '上传文件',component: upload,hidden: false },
       { path: '/media_list', name: '我的媒资',component: media_list,hidden: false }

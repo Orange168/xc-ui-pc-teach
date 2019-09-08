@@ -2,6 +2,7 @@
 import Home from '@/module/home/page/home.vue';
 import course_list from '@/module/course/page/course_list.vue';
 import course_add from '@/module/course/page/course_add.vue';
+// course manage
 import course_manage from '@/module/course/page/course_manage.vue';
 import course_summary from '@/module/course/page/course_manage/course_summary.vue';
 import course_picture from '@/module/course/page/course_manage/course_picture.vue';

@@ -11,6 +11,7 @@ import HomeRouter from '@/module/home/router'
 import CourseRouter from '@/module/course/router'
 import MediaRouter from '@/module/media/router'
 import ExamRouter from '@/module/exam/router'
+import Picture from  '@/module/picture/router'
 import QuestionRouter from '@/module/question/router'
 // import CmsRouter from '@/module/cms/router'
 // import FsRouter from '@/module/fs/router'
@@ -18,6 +19,7 @@ import QuestionRouter from '@/module/question/router'
 concat(CourseRouter)
 concat(HomeRouter)
 concat(MediaRouter)
+concat(Picture)
 // concat(ExamRouter)
 // concat(QuestionRouter)
 // concat(CmsRouter)

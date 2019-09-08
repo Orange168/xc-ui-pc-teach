@@ -28,6 +28,23 @@ export const addTeachplan = teachplah => {
   return http.requestPost(apiUrl+'/course/teachplan/add',teachplah)
 }
 
+export const getCoursebaseById = id =>{
+  return http.requestQuickGet(apiUrl + '/course/coursebase/get/' + id)
+}
+
+export const updateCourseBase = (id,course) =>{
+  return http.requestPut(apiUrl + '/course/coursebase/update/' +id, course)
+}
+
+export const getCourseMarketById = id =>{
+  return http.requestGet(apiUrl + '/course/market/get/' + id)
+}
+
+export const updateCourseMarket = (id, courseMarket) => {
+  return http.requestPut(apiUrl + '/course/market/update/' + id, courseMarket);
+}
+
+
 //保存课程图片地址到课程数据 库
 export const addCoursePic= (courseId,pic) => {
   return http.requestPost(apiUrl+'/course/coursepic/add?courseId='+courseId+"&pic="+pic)

@@ -81,12 +81,14 @@ router.beforeEach((to, from, next) => {
           next();
         }else{
           //跳转到统一登陆
-          window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+          window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
         }
       })
     }else{
       //跳转到统一登陆
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+      window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
+      console.log('base64 ==>')
+      console.log(Base64.encode(window.location))
     }
   }else{
     next();
@@ -95,25 +97,25 @@ router.beforeEach((to, from, next) => {
 });
 
 //授权
-// router.afterEach((to, from, next) => {
-//   if(openAuthorize){
-//     let activeUser
-//     try{
-//       activeUser = utilApi.getActiveUser();
-//     }catch(e){
-//       //alert(e)
-//     }
-//     if(activeUser) {
-//       //权限校验
-//       let requiresAuth = to.meta.requiresAuth;
-//       let permission =to.meta.permission;
-//       if(requiresAuth && permission){
-//         utilApi.checkAuthorities(router,permission);
-//       }
-//     }
-//   }
-//
-// });
+router.afterEach((to, from, next) => {
+  if(openAuthorize){
+    let activeUser
+    try{
+      activeUser = utilApi.getActiveUser();
+    }catch(e){
+      //alert(e)
+    }
+    if(activeUser) {
+      //权限校验
+      let requiresAuth = to.meta.requiresAuth;
+      let permission =to.meta.permission;
+      if(requiresAuth && permission){
+        utilApi.checkAuthorities(router,permission);
+      }
+    }
+  }
+
+});
 
 import axios from 'axios'
 import { Message } from 'element-ui';
@@ -130,7 +132,7 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 // 响应拦截
-/*axios.interceptors.response.use(data => {
+axios.interceptors.response.use(data => {
   console.log("data=")
   console.log(data)
   if(data && data.data){
@@ -140,7 +142,7 @@ axios.interceptors.request.use(function (config) {
       //   path: '/login',
       //   query: {returnUrl: Base64.encode(window.location)}
       // })
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+      window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
     }else if(data.data.code && data.data.code =='10002'){
       Message.error('您没有此操作的权限，请与客服联系！');
     }else if(data.data.code && data.data.code =='10003'){
@@ -148,8 +150,8 @@ axios.interceptors.request.use(function (config) {
     }
   }
   return data
-})*/
-/*
+})
+
  //axios请求超时设置
 axios.defaults.retry = 2;
 axios.defaults.retryDelay = 2000;
@@ -205,7 +207,8 @@ axios.interceptors.response.use(data => {// 响应拦截
     return axios(config);
   });
 });
-*/
+
+
 new Vue({
   el: '#app',
   router,
